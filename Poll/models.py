@@ -8,3 +8,6 @@ class Work(models.Model):
     creator_name = models.TextField()
     thumbnail = models.ImageField()
     polled = models.IntegerField()
+
+    def __str__(self):
+        return self.title
