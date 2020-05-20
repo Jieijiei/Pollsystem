@@ -9,14 +9,23 @@
 <body>
     <table border="1">
         <tr>
-            <th>name</th>
+            <th>作品リスト</th>
         </tr>
         {% for work in object_list %}
+        <input type="radio" name="example" value="この作品に投票" checked>
+
         <tr>
-            <td>{{ work.title }}</td>
+            <td>{{ work.title }}
+                {% load static%}
+                <img src="{{ work.thumbnail.url }}" width="100" height="100">
+                <form method="post">
+                    <p>投票しますか？</p>
+                    <input type="radio" name="a1" value=work>はい
+                    </form></td>
         </tr>
         {% endfor %}
     </table>
+    <p><input type="submit" value="送信する"></p>
 </body>
 
 </html>
