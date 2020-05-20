@@ -15,9 +15,10 @@
         <input type="radio" name="example" value="この作品に投票" checked>
 
         <tr>
-            <td>{{ work.title }}
-                {% load static%}
-                <img src="{{ work.thumbnail.url }}" width="100" height="100">
+            <td>{% load static%}
+                    <img src="{{ work.thumbnail.url }}" width="100" height="100">
+                {{ work.title }}
+                <p>作った人/{{ work.creator_name }}</p>
                 <form method="post">
                     <p>投票しますか？</p>
                     <input type="radio" name="a1" value=work>はい
