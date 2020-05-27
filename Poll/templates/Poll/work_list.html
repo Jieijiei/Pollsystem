@@ -1,11 +1,16 @@
 {% load static%}
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
     <meta charset="utf-8" />
     <title>ListView</title>
     <link rel="stylesheet" href="{% static 'main.css' %}" type="text/css">
+    <script language="javascript" type="text/javascript">
+    function poll_decide() {
+        window.confirm("この作品に決定する？");
+    }
+    </script>
 </head>
 
 <body>
@@ -19,13 +24,13 @@
                 </div>
                 <img src="{{ work.thumbnail.url }}" width="800" height="500">
                 <p class="user">作った人/{{ work.creator_name }}</p>
-                <form method="post">
-                    <input type="radio" name="a1" value=work><nodr class="message">この作品にする！</nodr>
+                <form action="radio.php" method="post">
+                    <input type="radio" name="poll" value=work id="button"  onclick="poll_decide();">
+                    <label class="label">この作品にする！</label>
                     </form></td>
         </tr>
         {% endfor %}
     </table>
-    <p><input type="submit" value="投票する"></p>
 </body>
 
 </html>
