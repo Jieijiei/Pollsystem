@@ -7,8 +7,10 @@
     <title>ListView</title>
     <link rel="stylesheet" href="{% static 'main.css' %}" type="text/css">
     <script language="javascript" type="text/javascript">
-    function poll_decide() {
-        window.confirm("この作品に決定する？");
+    function poll_decide(title,creator_name) {
+        if (confirm("この作品に決定する？"　+ "\n" + title +　"\n" + creator_name)) {
+            window.open("finish", "投票ページに戻ります。")
+        }
     }
     </script>
 </head>
@@ -25,8 +27,8 @@
                 <img src="{{ work.thumbnail.url }}" width="800" height="500">
                 <p class="user">作った人/{{ work.creator_name }}</p>
                 <form action="radio.php" method="post">
-                    <input type="radio" name="poll" value=work id="button"  onclick="poll_decide();">
-                    <label class="label">この作品にする！</label>
+                    <input type="radio" name="poll" value=work id="button"  onclick="poll_decide('{{ work.title }}','{{ work.creator_name }}');"/>
+                    <label for="button" class="label">この作品にする！</label>
                     </form></td>
         </tr>
         {% endfor %}
